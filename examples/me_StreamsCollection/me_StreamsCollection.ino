@@ -10,14 +10,14 @@
 #include <me_BaseTypes.h>
 #include <me_Console.h>
 
+#include <me_WorkmemTools.h>
 #include <me_StreamTools.h>
-#include <me_MemorySegment.h>
 #include <me_Delays.h>
 
 void MemReadTest()
 {
   TAddressSegment TestDataSeg =
-    me_MemorySegment::FromAsciiz("TEST DATA\n");
+    me_WorkmemTools::FromAsciiz("TEST DATA\n");
 
   me_StreamsCollection::TWorkmemInputStream MemIn;
   me_StreamsCollection::TUartOutputStream UartOut;
