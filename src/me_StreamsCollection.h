@@ -73,6 +73,21 @@ namespace me_StreamsCollection
 
   // )
 
+  // ( Program memory (Flash)
+
+  // [Adapter] Input stream == [Flash] + Address segment
+  class TProgmemInputStream : public IInputStream
+  {
+    public:
+      TBool Init(TAddressSegment AddrSeg);
+
+      TBool Read(TUnit * Unit) override;
+
+    private:
+      TAddressIterator Rator;
+  };
+
+  // )
 }
 
 /*
