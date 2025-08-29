@@ -88,6 +88,32 @@ namespace me_StreamsCollection
   };
 
   // )
+
+  // [Adapter] Input stream == [EEPROM] + Address segment
+  class TEepromInputStream : public IInputStream
+  {
+    public:
+      TBool Init(TAddressSegment AddrSeg);
+
+      TBool Read(TUnit * Unit) override;
+
+    private:
+      TAddressIterator Rator;
+  };
+
+  // [Adapter] Output stream == [EEPROM] + Address segment
+  class TEepromOutputStream : public IOutputStream
+  {
+    public:
+      TBool Init(TAddressSegment AddrSeg);
+
+      TBool Write(TUnit Unit) override;
+
+    private:
+      TAddressIterator Rator;
+  };
+
+  // )
 }
 
 /*
