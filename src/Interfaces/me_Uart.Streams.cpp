@@ -16,6 +16,7 @@
 #include <me_StreamsCollection.h>
 
 #include <me_BaseTypes.h>
+
 #include <me_Uart.h>
 
 using namespace me_StreamsCollection;

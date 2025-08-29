@@ -11,10 +11,25 @@
 #include <me_Console.h>
 
 #include <me_StreamTools.h>
+#include <me_MemorySegment.h>
 #include <me_Delays.h>
 
-void DummyTest()
+void MemReadTest()
 {
+  TAddressSegment TestDataSeg =
+    me_MemorySegment::FromAsciiz("TEST DATA\n");
+
+  me_StreamsCollection::TWorkmemInputStream MemIn;
+  me_StreamsCollection::TUartOutputStream UartOut;
+
+  Console.Print("( Memory data");
+
+  if (!MemIn.Init(TestDataSeg))
+    Console.Print("Failed to setup memory input stream");
+
+  me_StreamTools::CopyStreamTo(&MemIn, &UartOut);
+
+  Console.Print(")");
 }
 
 void UartEchoTest()
@@ -26,15 +41,20 @@ void UartEchoTest()
   me_StreamsCollection::TUartInputStream UartIn;
   me_StreamsCollection::TUartOutputStream UartOut;
 
-  const TUint_4 UartSpeed = 115200;
+  Console.Print("( Infinite UART echo");
 
-  if (!UartIn.Init(UartSpeed))
+  // UART.Init() will flush current output buffer. Giving time to transfer
+  me_Delays::Delay_Ms(20);
+
+  if (!UartIn.Init())
     Console.Print("Failed to setup UART for input");
 
-  if (!UartOut.Init(UartSpeed))
+  if (!UartOut.Init())
     Console.Print("Failed to setup UART for output");
 
   me_StreamTools::CopyStreamTo(&UartIn, &UartOut);
+
+  Console.Print(")");  // lol
 }
 
 void setup()
@@ -43,9 +63,7 @@ void setup()
 
   Console.Print("[me_StreamsCollection] test");
 
-  me_Delays::Delay_Ms(20);
-
-  DummyTest();
+  MemReadTest();
   UartEchoTest();
 
   Console.Print("Done");

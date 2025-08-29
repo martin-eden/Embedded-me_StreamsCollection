@@ -23,6 +23,8 @@
 
 namespace me_StreamsCollection
 {
+  // ( UART
+
   // [Adapter] Input stream == [UART]
   class TUartInputStream : public IInputStream
   {
@@ -40,6 +42,37 @@ namespace me_StreamsCollection
 
       TBool Write(TUnit Unit) override;
   };
+
+  // )
+
+  // ( Work memory (SRAM)
+
+  // [Adapter] Input stream == [RAM] + Address segment
+  class TWorkmemInputStream : public IInputStream
+  {
+    public:
+      TBool Init(TAddressSegment MemSeg);
+
+      TBool Read(TUnit * Unit) override;
+
+    private:
+      TAddressIterator Rator;
+  };
+
+  // [Adapter] Output stream == [RAM] + Address segment
+  class TWorkmemOutputStream : public IOutputStream
+  {
+    public:
+      TBool Init(TAddressSegment MemSeg);
+
+      TBool Write(TUnit Unit) override;
+
+    private:
+      TAddressIterator Rator;
+  };
+
+  // )
+
 }
 
 /*
