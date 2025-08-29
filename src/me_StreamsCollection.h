@@ -51,7 +51,7 @@ namespace me_StreamsCollection
   class TWorkmemInputStream : public IInputStream
   {
     public:
-      TBool Init(TAddressSegment MemSeg);
+      TBool Init(TAddressSegment AddrSeg);
 
       TBool Read(TUnit * Unit) override;
 
@@ -63,7 +63,7 @@ namespace me_StreamsCollection
   class TWorkmemOutputStream : public IOutputStream
   {
     public:
-      TBool Init(TAddressSegment MemSeg);
+      TBool Init(TAddressSegment AddrSeg);
 
       TBool Write(TUnit Unit) override;
 
