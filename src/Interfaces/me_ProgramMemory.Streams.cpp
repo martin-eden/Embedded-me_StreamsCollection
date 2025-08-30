@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-29
+  Last mod.: 2025-08-30
 */
 
 #include <me_StreamsCollection.h>
@@ -29,7 +29,7 @@ TBool TProgmemInputStream::Read(
   if (!Rator.GetNextAddr(&ReadAddr))
     return false;
 
-  return me_ProgramMemory::GetByteFrom((TUint_1 *) Unit, ReadAddr);
+  return me_ProgramMemory::GetByteAt((TUint_1 *) Unit, ReadAddr);
 }
 // )
 
