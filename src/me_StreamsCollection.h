@@ -1,4 +1,4 @@
-// Wrapping known functionality as streams
+// Umbrella module providing stream interface to memories and UART
 
 /*
   Author: Martin Eden
