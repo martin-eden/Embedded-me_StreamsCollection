@@ -63,7 +63,7 @@ namespace me_StreamsCollection
       TBool Read(TUnit * Unit) override;
 
     private:
-      TAddressIterator Rator;
+      TAddrsegIterator Rator;
   };
 
   // [Adapter] Output stream == [RAM] + Address segment
@@ -75,7 +75,7 @@ namespace me_StreamsCollection
       TBool Write(TUnit Unit) override;
 
     private:
-      TAddressIterator Rator;
+      TAddrsegIterator Rator;
   };
 
   // )
@@ -91,7 +91,7 @@ namespace me_StreamsCollection
       TBool Read(TUnit * Unit) override;
 
     private:
-      TAddressIterator Rator;
+      TAddrsegIterator Rator;
   };
 
   // )
@@ -105,7 +105,7 @@ namespace me_StreamsCollection
       TBool Read(TUnit * Unit) override;
 
     private:
-      TAddressIterator Rator;
+      TAddrsegIterator Rator;
   };
 
   // [Adapter] Output stream == [EEPROM] + Address segment
@@ -117,7 +117,7 @@ namespace me_StreamsCollection
       TBool Write(TUnit Unit) override;
 
     private:
-      TAddressIterator Rator;
+      TAddrsegIterator Rator;
   };
 
   // )
