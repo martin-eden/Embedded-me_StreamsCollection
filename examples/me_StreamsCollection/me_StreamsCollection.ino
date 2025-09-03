@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-29
+  Last mod.: 2025-09-03
 */
 
 #include <me_StreamsCollection.h>
@@ -22,10 +22,10 @@ void MemReadTest()
   me_StreamsCollection::TWorkmemInputStream MemIn;
   me_StreamsCollection::TUartOutputStream UartOut;
 
-  Console.Print("( Memory data");
+  MemIn.Init(TestDataSeg);
+  UartOut.Init();
 
-  if (!MemIn.Init(TestDataSeg))
-    Console.Print("Failed to setup memory input stream");
+  Console.Print("( Memory data");
 
   me_StreamTools::CopyStreamTo(&MemIn, &UartOut);
 
@@ -75,4 +75,5 @@ void loop()
 
 /*
   2025-08-29
+  2025-09-03
 */
