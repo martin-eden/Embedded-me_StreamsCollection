@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-29
+  Last mod.: 2025-09-03
 */
 
 /*
@@ -20,6 +20,7 @@
 
 #include <me_BaseTypes.h>
 #include <me_BaseInterfaces.h>
+#include <me_StreamTools.h>
 
 namespace me_StreamsCollection
 {
@@ -32,6 +33,9 @@ namespace me_StreamsCollection
       TBool Init();
 
       TBool Read(TUnit * Unit) override;
+
+    private:
+      me_StreamTools::TReaderInputStream ReaderInputStream;
   };
 
   // [Adapter] Output stream == [UART]
@@ -41,6 +45,9 @@ namespace me_StreamsCollection
       TBool Init();
 
       TBool Write(TUnit Unit) override;
+
+    private:
+      me_StreamTools::TWriterOutputStream WriterOutputStream;
   };
 
   // )
@@ -118,4 +125,5 @@ namespace me_StreamsCollection
 
 /*
   2025-08-29
+  2025-09-03
 */
