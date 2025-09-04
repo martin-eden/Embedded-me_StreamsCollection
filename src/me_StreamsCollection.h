@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-03
+  Last mod.: 2025-09-04
 */
 
 /*
@@ -74,6 +74,10 @@ namespace me_StreamsCollection
 
       TBool Write(TUnit Unit) override;
 
+      TAddress GetWriteAddr();
+
+      TBool IsFull();
+
     private:
       TAddrsegIterator Rator;
   };
@@ -126,4 +130,5 @@ namespace me_StreamsCollection
 /*
   2025-08-29
   2025-09-03
+  2025-09-04
 */

@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-29
+  Last mod.: 2025-09-04
 */
 
 #include <me_StreamsCollection.h>
@@ -53,9 +53,20 @@ TBool TWorkmemOutputStream::Write(
 
   return me_WorkMemory::SetByteAt(WriteAddr, (TUint_1) Unit);
 }
+
+TAddress TWorkmemOutputStream::GetWriteAddr()
+{
+  return Rator.GetAddr();
+}
+
+TBool TWorkmemOutputStream::IsFull()
+{
+  return Rator.IsDone();
+}
 // )
 
 /*
   2025-08-26
   2025-08-29
+  2025-09-04
 */
