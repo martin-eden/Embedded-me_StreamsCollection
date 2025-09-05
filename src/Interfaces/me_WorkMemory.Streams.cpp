@@ -15,23 +15,19 @@
 using namespace me_StreamsCollection;
 
 // ( Input stream
+TBool Op_GetByte(
+  TAddress ValueAddr,
+  TAddress ReadAddr
+)
+{
+  return me_WorkMemory::GetByteFrom((TUint_1 *) ValueAddr, ReadAddr);
+}
+
 TBool TWorkmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  return Rator.Init(AddrSeg);
-}
-
-TBool TWorkmemInputStream::Read(
-  TUnit * Unit
-)
-{
-  TAddress ReadAddr;
-
-  if (!Rator.GetNextAddr(&ReadAddr))
-    return false;
-
-  return me_WorkMemory::GetByteFrom((TUint_1 *) Unit, ReadAddr);
+  return me_StreamTools::TAddrsegInputStream::Init(AddrSeg, Op_GetByte);
 }
 // )
 

@@ -55,15 +55,10 @@ namespace me_StreamsCollection
   // ( Work memory (SRAM)
 
   // [Adapter] Input stream == [RAM] + Address segment
-  class TWorkmemInputStream : public IInputStream
+  class TWorkmemInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
-
-      TBool Read(TUnit * Unit) override;
-
-    private:
-      TAddrsegIterator Rator;
   };
 
   // [Adapter] Output stream == [RAM] + Address segment
