@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-04
+  Last mod.: 2025-09-05
 */
 
 /*
@@ -67,19 +67,10 @@ namespace me_StreamsCollection
   };
 
   // [Adapter] Output stream == [RAM] + Address segment
-  class TWorkmemOutputStream : public IOutputStream
+  class TWorkmemOutputStream : public me_StreamTools::TAddrsegOutputStream
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
-
-      TBool Write(TUnit Unit) override;
-
-      TAddress GetWriteAddr();
-
-      TBool IsFull();
-
-    private:
-      TAddrsegIterator Rator;
   };
 
   // )
@@ -131,4 +122,5 @@ namespace me_StreamsCollection
   2025-08-29
   2025-09-03
   2025-09-04
+  2025-09-05
 */

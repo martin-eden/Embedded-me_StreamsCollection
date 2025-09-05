@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-04
+  Last mod.: 2025-09-05
 */
 
 #include <me_StreamsCollection.h>
@@ -10,6 +10,7 @@
 #include <me_BaseTypes.h>
 
 #include <me_WorkMemory.h>
+#include <me_StreamTools.h>
 
 using namespace me_StreamsCollection;
 
@@ -35,33 +36,19 @@ TBool TWorkmemInputStream::Read(
 // )
 
 // ( Output stream
+TBool Op_SetByte(
+  TAddress ValueAddr,
+  TAddress WriteAddr
+)
+{
+  return me_WorkMemory::SetByteAt(WriteAddr, *(TUint_1 *) ValueAddr);
+}
+
 TBool TWorkmemOutputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  return Rator.Init(AddrSeg);
-}
-
-TBool TWorkmemOutputStream::Write(
-  TUnit Unit
-)
-{
-  TAddress WriteAddr;
-
-  if (!Rator.GetNextAddr(&WriteAddr))
-    return false;
-
-  return me_WorkMemory::SetByteAt(WriteAddr, (TUint_1) Unit);
-}
-
-TAddress TWorkmemOutputStream::GetWriteAddr()
-{
-  return Rator.GetAddr();
-}
-
-TBool TWorkmemOutputStream::IsFull()
-{
-  return Rator.IsDone();
+  return me_StreamTools::TAddrsegOutputStream::Init(AddrSeg, Op_SetByte);
 }
 // )
 
