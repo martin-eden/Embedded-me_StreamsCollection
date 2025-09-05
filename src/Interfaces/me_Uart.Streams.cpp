@@ -2,21 +2,21 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-03
+  Last mod.: 2025-09-05
 */
 
 /*
   Implementation notes
 
-    * Read() will wait for data forever
-    * Init() is optional
     * Connection speed is hardcoded
+    * Read() will wait for data forever
 */
 
 #include <me_StreamsCollection.h>
 
 #include <me_BaseTypes.h>
 #include <me_BaseInterfaces.h>
+
 #include <me_StreamTools.h>
 #include <me_Uart.h>
 
@@ -26,10 +26,6 @@ using namespace me_StreamsCollection;
 const TUint_4 UartChannelSpeed_Bps = me_Uart::Speed_115k_Bps;
 
 // ( Input stream
-
-/*
-  [TFixedOperation] Read unit
-*/
 static TBool Op_ReadUnit(
   TAddress DataAddr
 )
@@ -39,32 +35,18 @@ static TBool Op_ReadUnit(
   return true;
 };
 
-/*
-  Init
-*/
 TBool TUartInputStream::Init()
 {
-  ReaderInputStream.Init(Op_ReadUnit);
+  if (!me_Uart::Init(UartChannelSpeed_Bps))
+    return false;
 
-  return me_Uart::Init(UartChannelSpeed_Bps);
-}
+  me_StreamTools::TReaderInputStream::Init(Op_ReadUnit);
 
-/*
-  Read
-*/
-TBool TUartInputStream::Read(
-  TUnit * Unit
-)
-{
-  return ReaderInputStream.Read(Unit);
+  return true;
 }
 // )
 
 // ( Output stream
-
-/*
-  [TFixedOperation] Write unit
-*/
 static TBool Op_WriteUnit(
   TAddress DataAddr
 )
@@ -74,24 +56,14 @@ static TBool Op_WriteUnit(
   return true;
 }
 
-/*
-  Init
-*/
 TBool TUartOutputStream::Init()
 {
-  WriterOutputStream.Init(Op_WriteUnit);
+  if (!me_Uart::Init(UartChannelSpeed_Bps))
+    return false;
 
-  return me_Uart::Init(UartChannelSpeed_Bps);
-}
+  me_StreamTools::TWriterOutputStream::Init(Op_WriteUnit);
 
-/*
-  Write
-*/
-TBool TUartOutputStream::Write(
-  TUnit Unit
-)
-{
-  return WriterOutputStream.Write(Unit);
+  return true;
 }
 // )
 

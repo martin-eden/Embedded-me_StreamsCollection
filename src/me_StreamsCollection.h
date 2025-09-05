@@ -27,27 +27,17 @@ namespace me_StreamsCollection
   // ( UART
 
   // [Adapter] Input stream == [UART]
-  class TUartInputStream : public IInputStream
+  class TUartInputStream : public me_StreamTools::TReaderInputStream
   {
     public:
       TBool Init();
-
-      TBool Read(TUnit * Unit) override;
-
-    private:
-      me_StreamTools::TReaderInputStream ReaderInputStream;
   };
 
   // [Adapter] Output stream == [UART]
-  class TUartOutputStream : public IOutputStream
+  class TUartOutputStream : public me_StreamTools::TWriterOutputStream
   {
     public:
       TBool Init();
-
-      TBool Write(TUnit Unit) override;
-
-    private:
-      me_StreamTools::TWriterOutputStream WriterOutputStream;
   };
 
   // )
