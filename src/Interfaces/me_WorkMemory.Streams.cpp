@@ -9,13 +9,13 @@
 
 #include <me_BaseTypes.h>
 
-#include <me_WorkMemory.h>
 #include <me_StreamTools.h>
+#include <me_WorkMemory.h>
 
 using namespace me_StreamsCollection;
 
 // ( Input stream
-TBool Op_GetByte(
+static TBool Op_GetByte(
   TAddress ValueAddr,
   TAddress ReadAddr
 )
@@ -32,7 +32,7 @@ TBool TWorkmemInputStream::Init(
 // )
 
 // ( Output stream
-TBool Op_SetByte(
+static TBool Op_SetByte(
   TAddress ValueAddr,
   TAddress WriteAddr
 )

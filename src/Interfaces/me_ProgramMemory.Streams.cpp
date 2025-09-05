@@ -2,38 +2,36 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-30
+  Last mod.: 2025-09-05
 */
 
 #include <me_StreamsCollection.h>
 
 #include <me_BaseTypes.h>
 
+#include <me_StreamTools.h>
 #include <me_ProgramMemory.h>
 
 using namespace me_StreamsCollection;
 
 // ( Input stream
+static TBool Op_GetByte(
+  TAddress ValueAddr,
+  TAddress ReadAddr
+)
+{
+  return me_ProgramMemory::GetByteAt((TUint_1 *) ValueAddr, ReadAddr);
+}
+
 TBool TProgmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  return Rator.Init(AddrSeg);
-}
-
-TBool TProgmemInputStream::Read(
-  TUnit * Unit
-)
-{
-  TAddress ReadAddr;
-
-  if (!Rator.GetNextAddr(&ReadAddr))
-    return false;
-
-  return me_ProgramMemory::GetByteAt((TUint_1 *) Unit, ReadAddr);
+  return me_StreamTools::TAddrsegInputStream::Init(AddrSeg, Op_GetByte);
 }
 // )
 
 /*
   2025-08-29
+  2025-09-05
 */

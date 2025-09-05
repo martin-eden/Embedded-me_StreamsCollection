@@ -30,7 +30,7 @@ const TUint_4 UartChannelSpeed_Bps = me_Uart::Speed_115k_Bps;
 /*
   [TFixedOperation] Read unit
 */
-TBool Op_ReadUnit(
+static TBool Op_ReadUnit(
   TAddress DataAddr
 )
 {
@@ -65,7 +65,7 @@ TBool TUartInputStream::Read(
 /*
   [TFixedOperation] Write unit
 */
-TBool Op_WriteUnit(
+static TBool Op_WriteUnit(
   TAddress DataAddr
 )
 {

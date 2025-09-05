@@ -73,41 +73,26 @@ namespace me_StreamsCollection
   // ( Program memory (Flash)
 
   // [Adapter] Input stream == [Flash] + Address segment
-  class TProgmemInputStream : public IInputStream
+  class TProgmemInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
-
-      TBool Read(TUnit * Unit) override;
-
-    private:
-      TAddrsegIterator Rator;
   };
 
   // )
 
   // [Adapter] Input stream == [EEPROM] + Address segment
-  class TEepromInputStream : public IInputStream
+  class TEepromInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
-
-      TBool Read(TUnit * Unit) override;
-
-    private:
-      TAddrsegIterator Rator;
   };
 
   // [Adapter] Output stream == [EEPROM] + Address segment
-  class TEepromOutputStream : public IOutputStream
+  class TEepromOutputStream : public me_StreamTools::TAddrsegOutputStream
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
-
-      TBool Write(TUnit Unit) override;
-
-    private:
-      TAddrsegIterator Rator;
   };
 
   // )
