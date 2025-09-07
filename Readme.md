@@ -35,7 +35,7 @@ Easy way is to clone [GetLibs][GetLibs] repo and run it's code.
 
 [Interface]: src/me_StreamsCollection.h
 [Example]: examples/me_StreamsCollection/me_StreamsCollection.ino
-[Implementation]: src/me_StreamsCollection.cpp
+[Implementation]: src/Interfaces/
 
 [GetLibs]: https://github.com/martin-eden/Embedded-Framework-GetLibs
 
