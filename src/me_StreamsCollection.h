@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-05
+  Last mod.: 2025-09-11
 */
 
 /*
@@ -24,7 +24,7 @@
 
 namespace me_StreamsCollection
 {
-  // ( UART
+  // ( UART stream
 
   // [Adapter] Input stream == [UART]
   class TUartInputStream : public me_StreamTools::TReaderInputStream
@@ -70,6 +70,8 @@ namespace me_StreamsCollection
   };
 
   // )
+
+  // ( EEPROM memory
 
   // [Adapter] Input stream == [EEPROM] + Address segment
   class TEepromInputStream : public me_StreamTools::TAddrsegInputStream
