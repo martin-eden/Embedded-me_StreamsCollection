@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-11
+  Last mod.: 2025-10-12
 */
 
 /*
@@ -85,6 +85,7 @@ namespace me_StreamsCollection
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
+      TBool Init();
   };
 
   // )

@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-05
+  Last mod.: 2025-10-12
 */
 
 #include <me_StreamsCollection.h>
@@ -45,6 +45,11 @@ TBool TEepromOutputStream::Init(
 )
 {
   return me_StreamTools::TAddrsegOutputStream::Init(AddrSeg, Op_SetByte);
+}
+
+TBool TEepromOutputStream::Init()
+{
+  return Init(TAddressSegment_Max);
 }
 // )
 
