@@ -78,6 +78,7 @@ namespace me_StreamsCollection
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
+      TBool Init();
   };
 
   // [Adapter] Output stream == [EEPROM] + Address segment
@@ -96,4 +97,5 @@ namespace me_StreamsCollection
   2025-09-03
   2025-09-04
   2025-09-05
+  2025-10-12
 */

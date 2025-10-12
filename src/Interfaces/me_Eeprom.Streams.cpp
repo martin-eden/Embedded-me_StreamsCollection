@@ -29,6 +29,11 @@ TBool TEepromInputStream::Init(
 {
   return me_StreamTools::TAddrsegInputStream::Init(AddrSeg, Op_GetByte);
 }
+
+TBool TEepromInputStream::Init()
+{
+  return Init(TAddressSegment_Max);
+}
 // )
 
 // ( Output stream
