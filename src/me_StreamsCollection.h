@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-10-12
+  Last mod.: 2026-03-31
 */
 
 /*
@@ -49,6 +49,7 @@ namespace me_StreamsCollection
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
+      TBool Init();
   };
 
   // [Adapter] Output stream == [RAM] + Address segment
@@ -56,6 +57,7 @@ namespace me_StreamsCollection
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
+      TBool Init();
   };
 
   // )
@@ -67,6 +69,7 @@ namespace me_StreamsCollection
   {
     public:
       TBool Init(TAddressSegment AddrSeg);
+      TBool Init();
   };
 
   // )
@@ -93,9 +96,6 @@ namespace me_StreamsCollection
 }
 
 /*
-  2025-08-29
-  2025-09-03
-  2025-09-04
-  2025-09-05
-  2025-10-12
+  2025 # # # # #
+  2026-03-31
 */
