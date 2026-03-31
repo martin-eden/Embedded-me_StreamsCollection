@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-09-03
+  Last mod.: 2026-03-31
 */
 
 #include <me_StreamsCollection.h>
@@ -27,7 +27,7 @@ void MemReadTest()
 
   Console.Print("( Memory data");
 
-  me_StreamTools::CopyStreamTo(&MemIn, &UartOut);
+  me_StreamTools::SaveStreamTo(&MemIn, &UartOut);
 
   Console.Print(")");
 }
@@ -52,7 +52,7 @@ void UartEchoTest()
   if (!UartOut.Init())
     Console.Print("Failed to setup UART for output");
 
-  me_StreamTools::CopyStreamTo(&UartIn, &UartOut);
+  me_StreamTools::SaveStreamTo(&UartIn, &UartOut);
 
   Console.Print(")");  // lol
 }
