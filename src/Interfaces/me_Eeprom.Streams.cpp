@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-03-31
+  Last mod.: 2026-04-02
 */
 
 #include <me_StreamsCollection.h>
@@ -20,17 +20,22 @@ TBool TEepromInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
+  if (!me_AddrsegTools::IsValid(AddrSeg))
+    return false;
+
   if (
-    !me_StreamTools::TAddrsegInputStream::Init(
+    !me_AddrsegTools::IsInside(
       AddrSeg,
-      me_Eeprom::Core::Get
+      me_Eeprom::Description::Segment
     )
   )
     return false;
 
   if (
-    me_AddrsegTools::GetEndAddr(AddrSeg) >
-    me_Eeprom::Description::MaxAddress
+    !me_StreamTools::TAddrsegInputStream::Init(
+      AddrSeg,
+      me_Eeprom::Core::Get
+    )
   )
     return false;
 
@@ -48,17 +53,22 @@ TBool TEepromOutputStream::Init(
   TAddressSegment AddrSeg
 )
 {
+  if (!me_AddrsegTools::IsValid(AddrSeg))
+    return false;
+
   if (
-    !me_StreamTools::TAddrsegOutputStream::Init(
+    !me_AddrsegTools::IsInside(
       AddrSeg,
-      me_Eeprom::Core::Put
+      me_Eeprom::Description::Segment
     )
   )
     return false;
 
   if (
-    me_AddrsegTools::GetEndAddr(AddrSeg) >
-    me_Eeprom::Description::MaxAddress
+    !me_StreamTools::TAddrsegOutputStream::Init(
+      AddrSeg,
+      me_Eeprom::Core::Put
+    )
   )
     return false;
 

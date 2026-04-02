@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-03-31
+  Last mod.: 2026-04-02
 */
 
 #include <me_StreamsCollection.h>
@@ -20,17 +20,22 @@ TBool TProgmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
+  if (!me_AddrsegTools::IsValid(AddrSeg))
+    return false;
+
   if (
-    !me_StreamTools::TAddrsegInputStream::Init(
+    !me_AddrsegTools::IsInside(
       AddrSeg,
-      me_ProgramMemory::Core::GetByteAt
+      me_ProgramMemory::Description::Segment
     )
   )
     return false;
 
   if (
-    me_AddrsegTools::GetEndAddr(AddrSeg) >
-    me_ProgramMemory::Description::MaxAddress
+    !me_StreamTools::TAddrsegInputStream::Init(
+      AddrSeg,
+      me_ProgramMemory::Core::GetByteAt
+    )
   )
     return false;
 

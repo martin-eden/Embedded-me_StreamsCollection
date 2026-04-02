@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-03-31
+  Last mod.: 2026-04-02
 */
 
 #include <me_StreamsCollection.h>
@@ -20,17 +20,22 @@ TBool TWorkmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
+  if (!me_AddrsegTools::IsValid(AddrSeg))
+    return false;
+
   if (
-    !me_StreamTools::TAddrsegInputStream::Init(
+    !me_AddrsegTools::IsInside(
       AddrSeg,
-      me_WorkMemory::Core::GetByteFrom
+      me_WorkMemory::Description::Segment
     )
   )
     return false;
 
   if (
-    me_AddrsegTools::GetEndAddr(AddrSeg) >
-    me_WorkMemory::Description::MaxAddress
+    !me_StreamTools::TAddrsegInputStream::Init(
+      AddrSeg,
+      me_WorkMemory::Core::GetByteFrom
+    )
   )
     return false;
 
@@ -48,17 +53,22 @@ TBool TWorkmemOutputStream::Init(
   TAddressSegment AddrSeg
 )
 {
+  if (!me_AddrsegTools::IsValid(AddrSeg))
+    return false;
+
   if (
-    !me_StreamTools::TAddrsegOutputStream::Init(
+    !me_AddrsegTools::IsInside(
       AddrSeg,
-      me_WorkMemory::Core::SetByteAt
+      me_WorkMemory::Description::Segment
     )
   )
     return false;
 
   if (
-    me_AddrsegTools::GetEndAddr(AddrSeg) >
-    me_WorkMemory::Description::MaxAddress
+    !me_StreamTools::TAddrsegOutputStream::Init(
+      AddrSeg,
+      me_WorkMemory::Core::SetByteAt
+    )
   )
     return false;
 
