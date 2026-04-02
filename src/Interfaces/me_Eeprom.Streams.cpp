@@ -31,12 +31,7 @@ TBool TEepromInputStream::Init(
   )
     return false;
 
-  if (
-    !me_StreamTools::TAddrsegInputStream::Init(
-      AddrSeg,
-      me_Eeprom::Core::Get
-    )
-  )
+  if (!TAddrsegStream::Init(AddrSeg, me_Eeprom::Core::Get))
     return false;
 
   return true;
@@ -64,12 +59,7 @@ TBool TEepromOutputStream::Init(
   )
     return false;
 
-  if (
-    !me_StreamTools::TAddrsegOutputStream::Init(
-      AddrSeg,
-      me_Eeprom::Core::Put
-    )
-  )
+  if (!TAddrsegStream::Init(AddrSeg, me_Eeprom::Core::Put))
     return false;
 
   return true;

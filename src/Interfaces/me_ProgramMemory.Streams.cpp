@@ -31,12 +31,7 @@ TBool TProgmemInputStream::Init(
   )
     return false;
 
-  if (
-    !me_StreamTools::TAddrsegInputStream::Init(
-      AddrSeg,
-      me_ProgramMemory::Core::GetByteAt
-    )
-  )
+  if (!TAddrsegStream::Init(AddrSeg, me_ProgramMemory::Core::GetByteAt))
     return false;
 
   return true;

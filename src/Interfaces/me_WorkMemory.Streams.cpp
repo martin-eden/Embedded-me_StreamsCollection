@@ -31,12 +31,7 @@ TBool TWorkmemInputStream::Init(
   )
     return false;
 
-  if (
-    !me_StreamTools::TAddrsegInputStream::Init(
-      AddrSeg,
-      me_WorkMemory::Core::GetByteFrom
-    )
-  )
+  if (!TAddrsegStream::Init(AddrSeg, me_WorkMemory::Core::GetByteFrom))
     return false;
 
   return true;
@@ -64,12 +59,7 @@ TBool TWorkmemOutputStream::Init(
   )
     return false;
 
-  if (
-    !me_StreamTools::TAddrsegOutputStream::Init(
-      AddrSeg,
-      me_WorkMemory::Core::SetByteAt
-    )
-  )
+  if (!TAddrsegStream::Init(AddrSeg, me_WorkMemory::Core::SetByteAt))
     return false;
 
   return true;
