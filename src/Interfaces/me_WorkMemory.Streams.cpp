@@ -15,23 +15,21 @@
 
 using namespace me_StreamsCollection;
 
+const TMethod
+  Op_Get = me_WorkMemory::Core::GetByteFrom,
+  Op_Put = me_WorkMemory::Core::SetByteAt;
+const TAddressSegment
+  MemorySegment = me_WorkMemory::Description::Segment;
+
 // ( Input stream
 TBool TWorkmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  if (!me_AddrsegTools::IsValid(AddrSeg))
+  if (!TAddrsegStream::Init(AddrSeg, Op_Get))
     return false;
 
-  if (
-    !me_AddrsegTools::IsInside(
-      AddrSeg,
-      me_WorkMemory::Description::Segment
-    )
-  )
-    return false;
-
-  if (!TAddrsegStream::Init(AddrSeg, me_WorkMemory::Core::GetByteFrom))
+  if (!me_AddrsegTools::IsInside(AddrSeg, MemorySegment))
     return false;
 
   return true;
@@ -39,7 +37,7 @@ TBool TWorkmemInputStream::Init(
 
 TBool TWorkmemInputStream::Init()
 {
-  return Init(me_WorkMemory::Description::Segment);
+  return Init(MemorySegment);
 }
 // )
 
@@ -48,18 +46,10 @@ TBool TWorkmemOutputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  if (!me_AddrsegTools::IsValid(AddrSeg))
+  if (!TAddrsegStream::Init(AddrSeg, Op_Put))
     return false;
 
-  if (
-    !me_AddrsegTools::IsInside(
-      AddrSeg,
-      me_WorkMemory::Description::Segment
-    )
-  )
-    return false;
-
-  if (!TAddrsegStream::Init(AddrSeg, me_WorkMemory::Core::SetByteAt))
+  if (!me_AddrsegTools::IsInside(AddrSeg, MemorySegment))
     return false;
 
   return true;
@@ -67,13 +57,12 @@ TBool TWorkmemOutputStream::Init(
 
 TBool TWorkmemOutputStream::Init()
 {
-  return Init(me_WorkMemory::Description::Segment);
+  return Init(MemorySegment);
 }
 // )
 
 /*
-  2025-08-26
-  2025-08-29
-  2025-09-04
+  2025 # # #
   2026-03-31
+  2026-04-02
 */

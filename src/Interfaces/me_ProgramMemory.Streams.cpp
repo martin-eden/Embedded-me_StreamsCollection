@@ -15,23 +15,20 @@
 
 using namespace me_StreamsCollection;
 
+const TMethod
+  Op_Get = me_ProgramMemory::Core::GetByteAt;
+const TAddressSegment
+  MemorySegment = me_ProgramMemory::Description::Segment;
+
 // ( Input stream
 TBool TProgmemInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  if (!me_AddrsegTools::IsValid(AddrSeg))
+  if (!TAddrsegStream::Init(AddrSeg, Op_Get))
     return false;
 
-  if (
-    !me_AddrsegTools::IsInside(
-      AddrSeg,
-      me_ProgramMemory::Description::Segment
-    )
-  )
-    return false;
-
-  if (!TAddrsegStream::Init(AddrSeg, me_ProgramMemory::Core::GetByteAt))
+  if (!me_AddrsegTools::IsInside(AddrSeg, MemorySegment))
     return false;
 
   return true;
@@ -39,12 +36,12 @@ TBool TProgmemInputStream::Init(
 
 TBool TProgmemInputStream::Init()
 {
-  return Init(me_ProgramMemory::Description::Segment);
+  return Init(MemorySegment);
 }
 // )
 
 /*
-  2025-08-29
-  2025-09-05
+  2025 # #
   2026-03-31
+  2026-04-02
 */

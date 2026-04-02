@@ -15,23 +15,21 @@
 
 using namespace me_StreamsCollection;
 
+const TMethod
+  Op_Get = me_Eeprom::Core::Get,
+  Op_Put = me_Eeprom::Core::Put;
+const TAddressSegment
+  MemorySegment = me_Eeprom::Description::Segment;
+
 // ( Input stream
 TBool TEepromInputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  if (!me_AddrsegTools::IsValid(AddrSeg))
+  if (!TAddrsegStream::Init(AddrSeg, Op_Get))
     return false;
 
-  if (
-    !me_AddrsegTools::IsInside(
-      AddrSeg,
-      me_Eeprom::Description::Segment
-    )
-  )
-    return false;
-
-  if (!TAddrsegStream::Init(AddrSeg, me_Eeprom::Core::Get))
+  if (!me_AddrsegTools::IsInside(AddrSeg, MemorySegment))
     return false;
 
   return true;
@@ -39,7 +37,7 @@ TBool TEepromInputStream::Init(
 
 TBool TEepromInputStream::Init()
 {
-  return Init(me_Eeprom::Description::Segment);
+  return Init(MemorySegment);
 }
 // )
 
@@ -48,18 +46,10 @@ TBool TEepromOutputStream::Init(
   TAddressSegment AddrSeg
 )
 {
-  if (!me_AddrsegTools::IsValid(AddrSeg))
+  if (!TAddrsegStream::Init(AddrSeg, Op_Put))
     return false;
 
-  if (
-    !me_AddrsegTools::IsInside(
-      AddrSeg,
-      me_Eeprom::Description::Segment
-    )
-  )
-    return false;
-
-  if (!TAddrsegStream::Init(AddrSeg, me_Eeprom::Core::Put))
+  if (!me_AddrsegTools::IsInside(AddrSeg, MemorySegment))
     return false;
 
   return true;
@@ -67,12 +57,12 @@ TBool TEepromOutputStream::Init(
 
 TBool TEepromOutputStream::Init()
 {
-  return Init(me_Eeprom::Description::Segment);
+  return Init(MemorySegment);
 }
 // )
 
 /*
-  2025-08-29
-  2025-09-05
+  2025 # #
   2026-03-31
+  2026-04-02
 */
