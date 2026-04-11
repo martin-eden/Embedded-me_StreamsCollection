@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-03-31
+  Last mod.: 2026-04-11
 */
 
 /*
@@ -24,6 +24,13 @@
 
 namespace me_StreamsCollection
 {
+  // [Emitter] Input stream == Zeroes
+  class TZeroesInputStream : public IInputStream
+  {
+    public:
+      TBool Read(TUnit * Unit) override;
+  };
+
   // ( UART stream
 
   // [Adapter] Input stream == [UART]
@@ -98,4 +105,5 @@ namespace me_StreamsCollection
 /*
   2025 # # # # #
   2026-03-31
+  2026-04-11
 */
