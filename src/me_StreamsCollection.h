@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-04-11
+  Last mod.: 2026-04-12
 */
 
 /*
@@ -28,7 +28,7 @@ namespace me_StreamsCollection
   class TZeroesInputStream : public IInputStream
   {
     public:
-      TBool Read(TUnit * Unit) override;
+      TBool Read(TUnit *) override;
   };
 
   // ( UART stream
@@ -55,7 +55,7 @@ namespace me_StreamsCollection
   class TWorkmemInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
-      TBool Init(TAddressSegment AddrSeg);
+      TBool Init(TAddressSegment);
       TBool Init();
   };
 
@@ -63,7 +63,7 @@ namespace me_StreamsCollection
   class TWorkmemOutputStream : public me_StreamTools::TAddrsegOutputStream
   {
     public:
-      TBool Init(TAddressSegment AddrSeg);
+      TBool Init(TAddressSegment);
       TBool Init();
   };
 
@@ -75,7 +75,7 @@ namespace me_StreamsCollection
   class TProgmemInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
-      TBool Init(TAddressSegment AddrSeg);
+      TBool Init(TAddressSegment);
       TBool Init();
   };
 
@@ -87,7 +87,7 @@ namespace me_StreamsCollection
   class TEepromInputStream : public me_StreamTools::TAddrsegInputStream
   {
     public:
-      TBool Init(TAddressSegment AddrSeg);
+      TBool Init(TAddressSegment);
       TBool Init();
   };
 
@@ -95,7 +95,7 @@ namespace me_StreamsCollection
   class TEepromOutputStream : public me_StreamTools::TAddrsegOutputStream
   {
     public:
-      TBool Init(TAddressSegment AddrSeg);
+      TBool Init(TAddressSegment);
       TBool Init();
   };
 
