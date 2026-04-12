@@ -32,10 +32,17 @@ namespace me_StreamsCollection
   };
 
   // [Adapter] Number encoder. Encodes binary byte to ASCII decimal.
-  class TByteToDecStream : public IOutputStream
+  class TByteToDecimalStream : public IOutputStream
   {
     public:
       TBool Write(TUnit) override;
+  };
+
+  // [Adapter] Number decoder. Decodes ASCII decimal to binary byte.
+  class TDecimalToByteStream : public IInputStream
+  {
+    public:
+      TBool Read(TUnit *) override;
   };
 
   // ( UART stream

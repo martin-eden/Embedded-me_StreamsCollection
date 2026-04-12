@@ -1,4 +1,4 @@
-// Number text encoder. Binary to decimal in ASCII
+// Integer to text codec
 
 /*
   Author: Martin Eden
@@ -32,11 +32,23 @@ using namespace me_StreamsCollection;
   Write byte as ASCII decimal to output stream.
   Separate entities with space.
 */
-TBool TByteToDecStream::Write(
+TBool TByteToDecimalStream::Write(
   TUnit Byte
 )
 {
   Console.Print(Byte);
+
+  return true;
+}
+
+/*
+  [Interface] Read unit
+*/
+TBool TDecimalToByteStream::Read(
+  TUnit * Byte
+)
+{
+  return Console.Read(Byte);
 }
 
 /*
