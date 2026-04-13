@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2026-04-12
+  Last mod.: 2026-04-13
 */
 
 /*
@@ -24,6 +24,20 @@
 
 namespace me_StreamsCollection
 {
+  // Empty input stream
+  class TEmptyInputStream : public IInputStream
+  {
+    public:
+      TBool Read(TUnit *) override;
+  };
+
+  // Full output stream
+  class TFullOutputStream : public IOutputStream
+  {
+    public:
+      TBool Write(TUnit) override;
+  };
+
   // [Emitter] Input stream == Zeroes
   class TZeroesInputStream : public IInputStream
   {
@@ -120,4 +134,5 @@ namespace me_StreamsCollection
   2025 # # # # #
   2026-03-31
   2026-04-11
+  2026-04-13
 */
